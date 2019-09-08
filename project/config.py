@@ -1,20 +1,20 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig:
-    TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    TESTING = False
+    SECRET_KEY = os.getenv('SECRET_KEY')
     CSRF_ENABLED = True
 
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration"""
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
     TESTING = True
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
 
 
 class ProductionConfig(BaseConfig):
     """Production configuration"""
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    pass
