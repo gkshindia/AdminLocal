@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="column">
+    <br>
+    <h1 class="title"> Edit Profile</h1>
+    <hr>
+    <br>
+    <form action="" , method="POST">
+      {{ form.hidden_tag() }}
+      <div class="field">
+        <label class="label">{{ form.username.label }}</label>
+        <div class="control has-icons-left has-icons-right">
+          {{ form.username(size=32, class="input is-success", type="Text") }}
+          <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+        </div>
+        <p class="help is-success">This username is available</p>
+      </div>
+      <div class="field">
+        <label class="label">{{ form.full_name.label }}</label>
+        <div class="control has-icons-left has-icons-right">
+          {{ form.full_name(size=32, class="input is-success") }}
+          <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          {{ form.submit(placeholder=Submit, class="button is-link") }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

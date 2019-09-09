@@ -26,6 +26,7 @@ def create_app(script_info=None):
     migrate.init_app(app, db)
     bcrypt.init_app(app)
     login.init_app(app)
+    login.login_view = 'users.login'
 
     from project.app.models import User
     from project.app.users import users_blueprint

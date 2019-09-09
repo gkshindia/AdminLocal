@@ -22,6 +22,9 @@
             Log in
           </a>
           {% else %}
+          <a class="button is-primary" href="{{ url_for('users.edit_profile') }}">
+            <strong>Edit your profile</strong>
+          </a>
           <a href="{{ url_for('users.logout') }}" class="button is-primary">
             <strong>Logout</strong>
           </a>

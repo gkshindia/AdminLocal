@@ -48,7 +48,7 @@
         <div class="field">
           <label class="label">{{ form.password.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.password(size=32, class="input is-danger", type="email", placeholder="Password input") }}
+            {{ form.password(size=32, class="input is-danger", type="password", placeholder="Password input") }}
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -61,7 +61,7 @@
         <div class="field">
           <label class="label">{{ form.rep_password.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.rep_password(size=32, class="input is-danger", type="email", placeholder="Password input") }}
+            {{ form.rep_password(size=32, class="input is-danger", type="password", placeholder="Password input") }}
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -71,14 +71,14 @@
           </div>
           <p class="help is-danger">This email is invalid</p>
         </div>
-       <div class="field is-grouped">
-        <div class="control">
+        <div class="field is-grouped">
+          <div class="control">
           {{ form.submit(placeholder=Submit, class="button is-link") }}
-        </div>
-         <div>
+          </div>
+          <div>
            <p> Already Registerd?<a href="{{ url_for('users.login') }}" class="button is-primary">Click to Login!</a>
-         </div>
-      </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>

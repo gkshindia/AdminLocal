@@ -1,4 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if not current_user.is_anonymous %}
+{% if not current_user.admin %}
+<div class="container" align="center">
+  <div class="center">
+    <hi>
+      Hi, <strong>{{current_user.full_name}}</strong>
+    </hi>
+    <div>
+      <p>
+        You registered with us via Email - <strong>{{current_user.email}}</strong>
+        using the username - <strong>{{current_user.username}}</strong>
+        on <strong>{{current_user.created_date}}</strong>
+      </p>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endif %}
 {% endblock %}
