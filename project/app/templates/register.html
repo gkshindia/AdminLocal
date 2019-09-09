@@ -75,6 +75,9 @@
         <div class="control">
           {{ form.submit(placeholder=Submit, class="button is-link") }}
         </div>
+         <div>
+           <p> Already Registerd?<a href="{{ url_for('users.login') }}" class="button is-primary">Click to Login!</a>
+         </div>
       </div>
       </form>
     </div>

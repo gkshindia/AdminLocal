@@ -38,6 +38,9 @@
         <div class="control">
           {{ form.submit(placeholder=Submit, class="button is-link") }}
         </div>
+          <div>
+            <p> New User? <a href="{{ url_for('users.register') }}" class="button is-primary">Click to Register!</a>
+          </div>
       </div>
       </form>
     </div>
