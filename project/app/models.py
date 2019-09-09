@@ -1,8 +1,9 @@
 from sqlalchemy.sql import func
-from project import db, bcrypt
+from project import db, bcrypt, login
+from flask_login import UserMixin
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
@@ -32,3 +33,8 @@ class User(db.Model):
 
     def __repr__(self):
         return f"{self.full_name}, {self.email}, {self.username}"
+
+
+@login.user_loader
+def load_user(_id):
+    return User.query.get(int(_id))

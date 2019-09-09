@@ -3,10 +3,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 db = SQLAlchemy()
 migrate = Migrate()
 bcrypt = Bcrypt()
+login = LoginManager()
 
 
 def create_app(script_info=None):
@@ -23,6 +25,7 @@ def create_app(script_info=None):
     db.init_app(app=app)
     migrate.init_app(app, db)
     bcrypt.init_app(app)
+    login.init_app(app)
 
     from project.app.models import User
     from project.app.users import users_blueprint
