@@ -1,5 +1,30 @@
-<table>
-  <tr valign="top">
-    <td>{{ user.username }}</td>
-  </tr>
-</table>
+<div class="container">
+  <div class="column">
+    <br>
+    <h1 class="title"> Users Registered </h1>
+    <hr>
+    <br>
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+      <thead>
+      <tr>
+        <th><abbr title="FullName">Full Name</abbr></th>
+        <th><abbr title="Username">Username</abbr></th>
+        <th><abbr title="Email">Email</abbr></th>
+        <th><abbr title="Admin">Admin</abbr></th>
+        <th><abbr title="create_date">Registered on</abbr></th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in session['users_list'] %}
+      <tr>
+        <td><strong>{{ user.full_name }}</strong></td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.admin }}</td>
+        <td>{{ user.created_date }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -23,6 +23,7 @@ class User(UserMixin, db.Model):
             'email': self.email,
             'active': self.active,
             'admin': self.admin,
+            'created_date': self.created_date,
         }
 
     def __init__(self, full_name, username, email, password):
