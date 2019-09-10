@@ -1,5 +1,7 @@
 import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 class BaseConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -12,7 +14,7 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration"""
     TESTING = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'app.db')
 
 
 class ProductionConfig(BaseConfig):
