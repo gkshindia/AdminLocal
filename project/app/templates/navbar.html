@@ -22,9 +22,11 @@
             Log in
           </a>
           {% else %}
+          {% if not current_user.admin %}
           <a class="button is-primary" href="{{ url_for('users.edit_profile') }}">
             <strong>Edit your profile</strong>
           </a>
+          {% endif %}
           <a href="{{ url_for('users.logout') }}" class="button is-primary">
             <strong>Logout</strong>
           </a>
