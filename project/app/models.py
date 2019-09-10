@@ -34,6 +34,12 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f"{self.full_name}, {self.email}, {self.username}"
 
+    def is_admin(self):
+        return self.admin
+
+    def is_authenticated(self):
+        return True
+
 
 @login.user_loader
 def load_user(_id):

@@ -4,14 +4,14 @@
   <div class="container">
     <div class="column">
       <br>
-      <h1 class="title", style="text-align: center">AdminLocal</h1>
+      <h1 class="title" , style="text-align: center">Registration</h1>
       <hr><br>
       <form action="", method="POST">
         {{ form.hidden_tag() }}
         <div class="field">
           <label class="label">{{ form.full_name.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.full_name(placeholder="Text Input", size=32, class="input is-success", type="Text") }}
+            {{ form.full_name(placeholder="Text Input", size=32, class="input", type="Text") }}
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -23,7 +23,7 @@
         <div class="field">
           <label class="label">{{ form.email.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.email(size=64, class="input is-danger", type="email", placeholder="Email input") }}
+            {{ form.email(size=64, class="input", type="email", placeholder="Email input") }}
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -31,11 +31,14 @@
               <i class="fas fa-exclamation-triangle"></i>
             </span>
           </div>
+          {% for error in form.email.errors %}
+          <p class="help is-danger">[{{ error }}]</p>
+          {% endfor %}
         </div>
         <div class="field">
           <label class="label">{{ form.username.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.username(placeholder="Text Input", size=32, class="input is-success", type="Text") }}
+            {{ form.username(placeholder="Text Input", size=32, class="input", type="Text") }}
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -43,12 +46,14 @@
               <i class="fas fa-check"></i>
             </span>
           </div>
-          <p class="help is-success">This username is available</p>
+          {% for error in form.username.errors %}
+          <p class="help is-danger">[{{ error }}]</p>
+          {% endfor %}
         </div>
         <div class="field">
           <label class="label">{{ form.password.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.password(size=32, class="input is-danger", type="password", placeholder="Password input") }}
+            {{ form.password(size=32, class="input", type="password", placeholder="Password input") }}
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -56,12 +61,14 @@
               <i class="fas fa-exclamation-triangle"></i>
             </span>
           </div>
-          <p class="help is-danger">This email is invalid</p>
+          {% for error in form.password.errors %}
+          <p class="help is-danger">[{{ error }}]</p>
+          {% endfor %}
         </div>
         <div class="field">
           <label class="label">{{ form.rep_password.label }}</label>
           <div class="control has-icons-left has-icons-right">
-            {{ form.rep_password(size=32, class="input is-danger", type="password", placeholder="Password input") }}
+            {{ form.rep_password(size=32, class="input", type="password", placeholder="Password input") }}
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -69,7 +76,9 @@
               <i class="fas fa-exclamation-triangle"></i>
             </span>
           </div>
-          <p class="help is-danger">This email is invalid</p>
+          {% for error in form.rep_password.errors %}
+          <p class="help is-danger">[{{ error }}]</p>
+          {% endfor %}
         </div>
         <div class="field is-grouped">
           <div class="control">

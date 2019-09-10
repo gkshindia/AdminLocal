@@ -21,6 +21,9 @@ def index():
 def login():
     try:
         if current_user.is_authenticated:
+            if not current_user.is_admin():
+                users_list = [user for user in User.query.all()]
+                return redirect(url_for('.index', users=users_list))
             return redirect(url_for('.index'))
         form = LoginForm()
         if form.validate_on_submit():

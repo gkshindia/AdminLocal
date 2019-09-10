@@ -29,6 +29,7 @@ def create_app(script_info=None):
     login.login_view = 'users.login'
 
     from project.app.models import User
+    from project.app import errors, users
     from project.app.users import users_blueprint
     app.register_blueprint(users_blueprint)
 
