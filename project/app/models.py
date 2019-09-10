@@ -26,11 +26,12 @@ class User(UserMixin, db.Model):
             'created_date': self.created_date,
         }
 
-    def __init__(self, full_name, username, email, password):
+    def __init__(self, full_name, username, email, password, admin=False):
         self.full_name = full_name
         self.username = username
         self.email = email
         self.password = bcrypt.generate_password_hash(password).decode()
+        self.admin = admin
 
     def __repr__(self):
         return f"{self.full_name}, {self.email}, {self.username}"
