@@ -43,3 +43,7 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError(_('Please use a different username.'))
+
+
+class DeleteUserForm(FlaskForm):
+    delete = SubmitField("Delete")

@@ -39,6 +39,12 @@
         </div>
       </div>
     </form>
+    <form action="{{ url_for('users.delete') }}" method="POST">
+      <div>
+        If You want to delete your account
+        {{ form.submit(placeholder="Delete", class="button is-danger") }}
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}

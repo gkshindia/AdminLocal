@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, url_for, redirect, flash, request
 from flask_restful import Resource, Api
-from project.app.forms import RegistrationForm, LoginForm, EditProfileForm
+from project.app.forms import RegistrationForm, LoginForm, EditProfileForm, DeleteUserForm
 from flask_login import logout_user, login_user, current_user, login_required
 from project.app.models import User
 from project import bcrypt, db
@@ -21,9 +21,6 @@ def index():
 def login():
     try:
         if current_user.is_authenticated:
-            if not current_user.is_admin():
-                users_list = [user for user in User.query.all()]
-                return redirect(url_for('.index', users=users_list))
             return redirect(url_for('.index'))
         form = LoginForm()
         if form.validate_on_submit():
@@ -65,7 +62,7 @@ def register():
 @users_blueprint.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm()
+    form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.full_name = form.full_name.data
@@ -77,6 +74,16 @@ def edit_profile():
         form.full_name.data = current_user.full_name
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+
+@users_blueprint.route('/delete', methods=['GET', 'POST'])
+@login_required
+def delete():
+    db.session.delete(current_user)
+    db.session.commit()
+    flash("Your account has been sucessfully deleted")
+    logout_user()
+    return redirect(url_for('.index'))
 
 
 class PingUsers(Resource):
