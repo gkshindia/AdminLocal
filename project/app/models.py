@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     created_date = db.Column(db.DateTime, default=func.now(), nullable=False)
     admin = db.Column(db.Boolean(), default=False, nullable=False)
 
-    def to_json(self):
+    def to_dict(self):
         return {
             'id': self.id,
             'full_name': self.full_name,

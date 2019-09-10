@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-{% if not current_user.is_anonymous %}
 {% if not current_user.admin %}
 <div class="container" align="center">
   <div class="center">
@@ -17,7 +16,8 @@
   </div>
 </div>
 {% else %}
-<p>Hey Admin</p>
-{% endif %}
+{% for user in session.pop('users_list', []) %}
+{% include 'user.html' %}
+{% endfor %}
 {% endif %}
 {% endblock %}
